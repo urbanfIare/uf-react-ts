@@ -1,0 +1,654 @@
+/* Figma 홈페이지에서 분석한 디자인 시스템 */
+
+/* Figma의 색상 팔레트 */
+:root {
+  /* Primary Colors */
+  --figma-blue: #18a0fb;
+  --figma-blue-hover: #0d8ce0;
+  --figma-blue-light: #e5f4ff;
+  
+  /* Neutral Colors */
+  --figma-gray-50: #fafafa;
+  --figma-gray-100: #f5f5f5;
+  --figma-gray-200: #e5e5e5;
+  --figma-gray-300: #d4d4d4;
+  --figma-gray-400: #a3a3a3;
+  --figma-gray-500: #737373;
+  --figma-gray-600: #525252;
+  --figma-gray-700: #404040;
+  --figma-gray-800: #262626;
+  --figma-gray-900: #171717;
+  
+  /* Text Colors */
+  --figma-text-primary: #1f1f1f;
+  --figma-text-secondary: #6b6b6b;
+  --figma-text-tertiary: #a3a3a3;
+  
+  /* Background Colors */
+  --figma-bg-primary: #ffffff;
+  --figma-bg-secondary: #fafafa;
+  --figma-bg-tertiary: #f5f5f5;
+  
+  /* Border Colors */
+  --figma-border-light: #e5e5e5;
+  --figma-border-medium: #d4d4d4;
+  --figma-border-dark: #a3a3a3;
+  
+  /* Shadow Colors */
+  --figma-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --figma-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --figma-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --figma-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  
+  /* Spacing */
+  --figma-space-1: 4px;
+  --figma-space-2: 8px;
+  --figma-space-3: 12px;
+  --figma-space-4: 16px;
+  --figma-space-5: 20px;
+  --figma-space-6: 24px;
+  --figma-space-8: 32px;
+  --figma-space-10: 40px;
+  --figma-space-12: 48px;
+  --figma-space-16: 64px;
+  --figma-space-20: 80px;
+  
+  /* Border Radius */
+  --figma-radius-sm: 4px;
+  --figma-radius-md: 6px;
+  --figma-radius-lg: 8px;
+  --figma-radius-xl: 12px;
+  --figma-radius-2xl: 16px;
+  
+  /* Typography */
+  --figma-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  --figma-font-size-xs: 12px;
+  --figma-font-size-sm: 14px;
+  --figma-font-size-base: 16px;
+  --figma-font-size-lg: 18px;
+  --figma-font-size-xl: 20px;
+  --figma-font-size-2xl: 24px;
+  --figma-font-size-3xl: 30px;
+  --figma-font-size-4xl: 36px;
+  
+  /* Line Heights */
+  --figma-leading-tight: 1.25;
+  --figma-leading-snug: 1.375;
+  --figma-leading-normal: 1.5;
+  --figma-leading-relaxed: 1.625;
+  --figma-leading-loose: 2;
+}
+
+/* Figma 스타일 헬퍼 클래스 */
+.figma-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--figma-space-4);
+}
+
+.figma-card {
+  background: var(--figma-bg-primary);
+  border: 1px solid var(--figma-border-light);
+  border-radius: var(--figma-radius-lg);
+  box-shadow: var(--figma-shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.figma-card:hover {
+  box-shadow: var(--figma-shadow-md);
+  transform: translateY(-1px);
+}
+
+.figma-button {
+  background: var(--figma-blue);
+  color: white;
+  border: none;
+  border-radius: var(--figma-radius-md);
+  padding: var(--figma-space-3) var(--figma-space-5);
+  font-size: var(--figma-font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.figma-button:hover {
+  background: var(--figma-blue-hover);
+  transform: translateY(-1px);
+}
+
+.figma-button-secondary {
+  background: var(--figma-bg-primary);
+  color: var(--figma-text-primary);
+  border: 1px solid var(--figma-border-medium);
+}
+
+.figma-button-secondary:hover {
+  background: var(--figma-bg-secondary);
+  border-color: var(--figma-border-dark);
+}
+
+.figma-input {
+  background: var(--figma-bg-primary);
+  border: 1px solid var(--figma-border-medium);
+  border-radius: var(--figma-radius-md);
+  padding: var(--figma-space-3) var(--figma-space-4);
+  font-size: var(--figma-font-size-sm);
+  transition: border-color 0.2s ease;
+}
+
+.figma-input:focus {
+  outline: none;
+  border-color: var(--figma-blue);
+  box-shadow: 0 0 0 3px var(--figma-blue-light);
+}
+
+.figma-text-primary {
+  color: var(--figma-text-primary);
+}
+
+.figma-text-secondary {
+  color: var(--figma-text-secondary);
+}
+
+.figma-text-tertiary {
+  color: var(--figma-text-tertiary);
+}
+
+/* Figma 네비게이션 스타일 */
+.figma-nav {
+  background: var(--figma-bg-primary);
+  border-bottom: 1px solid var(--figma-border-light);
+  padding: var(--figma-space-4) 0;
+}
+
+.figma-nav-item {
+  color: var(--figma-text-secondary);
+  text-decoration: none;
+  padding: var(--figma-space-2) var(--figma-space-4);
+  border-radius: var(--figma-radius-md);
+  transition: all 0.2s ease;
+}
+
+.figma-nav-item:hover {
+  color: var(--figma-text-primary);
+  background: var(--figma-bg-secondary);
+}
+
+.figma-nav-item.active {
+  color: var(--figma-blue);
+  background: var(--figma-blue-light);
+}
+
+/* Figma 사이드바 스타일 */
+.figma-sidebar {
+  background: var(--figma-bg-primary);
+  border-right: 1px solid var(--figma-border-light);
+  width: 240px;
+  height: 100vh;
+  padding: var(--figma-space-4);
+}
+
+.figma-sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: var(--figma-space-3) var(--figma-space-4);
+  color: var(--figma-text-secondary);
+  text-decoration: none;
+  border-radius: var(--figma-radius-md);
+  margin-bottom: var(--figma-space-1);
+  transition: all 0.2s ease;
+}
+
+.figma-sidebar-item:hover {
+  color: var(--figma-text-primary);
+  background: var(--figma-bg-secondary);
+}
+
+.figma-sidebar-item.active {
+  color: var(--figma-blue);
+  background: var(--figma-blue-light);
+}
+
+/* Figma 그리드 시스템 */
+.figma-grid {
+  display: grid;
+  gap: var(--figma-space-6);
+}
+
+.figma-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.figma-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.figma-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* 반응형 그리드 */
+@media (max-width: 768px) {
+  .figma-grid-2,
+  .figma-grid-3,
+  .figma-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .figma-grid-3,
+  .figma-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Figma 헤더 스타일 */
+.figma-header {
+  background: var(--figma-bg-primary);
+  border-bottom: 1px solid var(--figma-border-light);
+  padding: var(--figma-space-4) 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.figma-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--figma-space-4);
+}
+
+/* Figma 로고 스타일 */
+.figma-logo {
+  font-size: var(--figma-font-size-xl);
+  font-weight: 700;
+  color: var(--figma-text-primary);
+  text-decoration: none;
+}
+
+/* Figma 메인 콘텐츠 */
+.figma-main {
+  background: var(--figma-bg-secondary);
+  min-height: calc(100vh - 80px);
+  padding: var(--figma-space-8) 0;
+}
+
+.figma-main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--figma-space-4);
+}
+
+/* Figma 푸터 스타일 */
+.figma-footer {
+  background: var(--figma-bg-primary);
+  border-top: 1px solid var(--figma-border-light);
+  padding: var(--figma-space-8) 0;
+  margin-top: var(--figma-space-16);
+}
+
+.figma-footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--figma-space-4);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--figma-space-8);
+}
+
+/* Figma 알림 스타일 */
+.figma-alert {
+  padding: var(--figma-space-4);
+  border-radius: var(--figma-radius-md);
+  margin-bottom: var(--figma-space-4);
+}
+
+.figma-alert-success {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.figma-alert-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.figma-alert-warning {
+  background: #fef3c7;
+  color: #d97706;
+  border: 1px solid #fed7aa;
+}
+
+.figma-alert-info {
+  background: #dbeafe;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+/* Figma 아바타 스타일 */
+.figma-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--figma-blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: var(--figma-font-size-sm);
+}
+
+.figma-avatar-lg {
+  width: 60px;
+  height: 60px;
+  font-size: var(--figma-font-size-lg);
+}
+
+.figma-avatar-sm {
+  width: 32px;
+  height: 32px;
+  font-size: var(--figma-font-size-xs);
+}
+
+/* Figma 배지 스타일 */
+.figma-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--figma-space-1) var(--figma-space-2);
+  background: var(--figma-bg-secondary);
+  color: var(--figma-text-secondary);
+  border-radius: var(--figma-radius-sm);
+  font-size: var(--figma-font-size-xs);
+  font-weight: 500;
+}
+
+.figma-badge-primary {
+  background: var(--figma-blue-light);
+  color: var(--figma-blue);
+}
+
+.figma-badge-success {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.figma-badge-warning {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.figma-badge-error {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* Figma 로딩 스타일 */
+.figma-loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--figma-border-light);
+  border-radius: 50%;
+  border-top-color: var(--figma-blue);
+  animation: figma-spin 1s ease-in-out infinite;
+}
+
+@keyframes figma-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Figma 모달 스타일 */
+.figma-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.figma-modal-content {
+  background: var(--figma-bg-primary);
+  border-radius: var(--figma-radius-xl);
+  padding: var(--figma-space-6);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--figma-shadow-xl);
+}
+
+.figma-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--figma-space-4);
+}
+
+.figma-modal-title {
+  font-size: var(--figma-font-size-xl);
+  font-weight: 600;
+  color: var(--figma-text-primary);
+}
+
+.figma-modal-close {
+  background: none;
+  border: none;
+  font-size: var(--figma-font-size-xl);
+  color: var(--figma-text-tertiary);
+  cursor: pointer;
+  padding: var(--figma-space-1);
+  border-radius: var(--figma-radius-sm);
+  transition: all 0.2s ease;
+}
+
+.figma-modal-close:hover {
+  background: var(--figma-bg-secondary);
+  color: var(--figma-text-primary);
+}
+
+/* Figma 툴팁 스타일 */
+.figma-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.figma-tooltip .figma-tooltip-text {
+  visibility: hidden;
+  width: 200px;
+  background: var(--figma-gray-800);
+  color: white;
+  text-align: center;
+  border-radius: var(--figma-radius-md);
+  padding: var(--figma-space-2) var(--figma-space-3);
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: var(--figma-font-size-xs);
+}
+
+.figma-tooltip:hover .figma-tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Figma 드롭다운 스타일 */
+.figma-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.figma-dropdown-content {
+  display: none;
+  position: absolute;
+  background: var(--figma-bg-primary);
+  min-width: 160px;
+  box-shadow: var(--figma-shadow-lg);
+  border-radius: var(--figma-radius-md);
+  z-index: 1;
+  border: 1px solid var(--figma-border-light);
+}
+
+.figma-dropdown:hover .figma-dropdown-content {
+  display: block;
+}
+
+.figma-dropdown-item {
+  color: var(--figma-text-primary);
+  padding: var(--figma-space-3) var(--figma-space-4);
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s ease;
+}
+
+.figma-dropdown-item:hover {
+  background: var(--figma-bg-secondary);
+}
+
+/* Figma 탭 스타일 */
+.figma-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--figma-border-light);
+  margin-bottom: var(--figma-space-6);
+}
+
+.figma-tab {
+  padding: var(--figma-space-3) var(--figma-space-4);
+  background: none;
+  border: none;
+  color: var(--figma-text-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.figma-tab:hover {
+  color: var(--figma-text-primary);
+}
+
+.figma-tab.active {
+  color: var(--figma-blue);
+  border-bottom-color: var(--figma-blue);
+}
+
+/* Figma 프로그레스 바 */
+.figma-progress {
+  width: 100%;
+  height: 8px;
+  background: var(--figma-bg-secondary);
+  border-radius: var(--figma-radius-sm);
+  overflow: hidden;
+}
+
+.figma-progress-bar {
+  height: 100%;
+  background: var(--figma-blue);
+  transition: width 0.3s ease;
+}
+
+/* Fig마 스켈레톤 로딩 */
+.figma-skeleton {
+  background: linear-gradient(90deg, var(--figma-bg-secondary) 25%, var(--figma-bg-tertiary) 50%, var(--figma-bg-secondary) 75%);
+  background-size: 200% 100%;
+  animation: figma-skeleton-loading 1.5s infinite;
+}
+
+@keyframes figma-skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.figma-skeleton-text {
+  height: 16px;
+  border-radius: var(--figma-radius-sm);
+  margin-bottom: var(--figma-space-2);
+}
+
+.figma-skeleton-title {
+  height: 24px;
+  border-radius: var(--figma-radius-sm);
+  margin-bottom: var(--figma-space-3);
+}
+
+.figma-skeleton-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Figma 반응형 유틸리티 */
+@media (max-width: 640px) {
+  .figma-container {
+    padding: 0 var(--figma-space-3);
+  }
+  
+  .figma-main-content {
+    padding: 0 var(--figma-space-3);
+  }
+  
+  .figma-header-content {
+    padding: 0 var(--figma-space-3);
+  }
+  
+  .figma-sidebar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .figma-sidebar.open {
+    left: 0;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .figma-container {
+    padding: 0 var(--figma-space-4);
+  }
+  
+  .figma-main-content {
+    padding: 0 var(--figma-space-4);
+  }
+  
+  .figma-header-content {
+    padding: 0 var(--figma-space-4);
+  }
+}
+
+@media (min-width: 1025px) {
+  .figma-container {
+    padding: 0 var(--figma-space-6);
+  }
+  
+  .figma-main-content {
+    padding: 0 var(--figma-space-6);
+  }
+  
+  .figma-header-content {
+    padding: 0 var(--figma-space-6);
+  }
+} 
