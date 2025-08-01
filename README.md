@@ -178,7 +178,7 @@ npm run build
 
 ## 👨‍💻 개발자
 
-**노경환** - [GitHub](https://github.com/your-username)
+**노경환** - [GitHub](https://github.com/urbanfIare)
 
 ---
 
