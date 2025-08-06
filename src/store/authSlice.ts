@@ -11,9 +11,9 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  user: authService.getCurrentUser(),
-  token: authService.getToken(),
-  isAuthenticated: authService.isAuthenticated(),
+  user: null,
+  token: null,
+  isAuthenticated: false,
   loading: false,
   error: null,
 };
@@ -55,6 +55,15 @@ const authSlice = createSlice({
     clearError: (state) => {
       state.error = null;
     },
+    restoreAuth: (state) => {
+      const token = authService.getToken();
+      const user = authService.getCurrentUser();
+      if (token && user) {
+        state.user = user;
+        state.token = token;
+        state.isAuthenticated = true;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -88,5 +97,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout, clearError } = authSlice.actions;
+export const { logout, clearError, restoreAuth } = authSlice.actions;
 export default authSlice.reducer;

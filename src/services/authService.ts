@@ -31,7 +31,7 @@ export const authService = {
   logout: (): void => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    window.location.href = "/login";
+    window.location.href = "/";
   },
 
   // 현재 사용자 정보 가져오기

@@ -1,13 +1,31 @@
-/* Figma 홈페이지에서 분석한 디자인 시스템 */
+/* 토스/Notion 스타일 디자인 시스템 */
 
-/* Figma의 색상 팔레트 */
+/* 토스/Notion 스타일 색상 팔레트 */
 :root {
-  /* Primary Colors */
+  /* Primary Colors - 토스 블루 */
+  --primary-blue: #3182f6;
+  --primary-blue-hover: #1b64da;
+  --primary-blue-light: #f0f7ff;
+  --primary-blue-dark: #1e40af;
+  
+  /* Figma Colors (기존 유지) */
   --figma-blue: #18a0fb;
   --figma-blue-hover: #0d8ce0;
   --figma-blue-light: #e5f4ff;
   
-  /* Neutral Colors */
+  /* Notion 스타일 Neutral Colors */
+  --notion-gray-50: #fafafa;
+  --notion-gray-100: #f7f7f5;
+  --notion-gray-200: #e9e9e7;
+  --notion-gray-300: #ddddda;
+  --notion-gray-400: #9b9a97;
+  --notion-gray-500: #787774;
+  --notion-gray-600: #64645f;
+  --notion-gray-700: #505049;
+  --notion-gray-800: #373530;
+  --notion-gray-900: #2f2f2b;
+  
+  /* Figma Grays (기존 유지) */
   --figma-gray-50: #fafafa;
   --figma-gray-100: #f5f5f5;
   --figma-gray-200: #e5e5e5;
@@ -34,7 +52,22 @@
   --figma-border-medium: #d4d4d4;
   --figma-border-dark: #a3a3a3;
   
-  /* Shadow Colors */
+  /* Status Colors */
+  --figma-green: #10b981;
+  --figma-green-light: #d1fae5;
+  --figma-red: #ef4444;
+  --figma-red-light: #fee2e2;
+  --figma-yellow: #f59e0b;
+  --figma-yellow-light: #fef3c7;
+  
+  /* Notion 스타일 Shadow */
+  --notion-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --notion-shadow-md: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  --notion-shadow-lg: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+  --notion-shadow-xl: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  --notion-shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  
+  /* Figma Shadow (기존 유지) */
   --figma-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --figma-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --figma-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -53,7 +86,15 @@
   --figma-space-16: 64px;
   --figma-space-20: 80px;
   
-  /* Border Radius */
+  /* 토스 스타일 Border Radius */
+  --toss-radius-sm: 6px;
+  --toss-radius-md: 12px;
+  --toss-radius-lg: 16px;
+  --toss-radius-xl: 20px;
+  --toss-radius-2xl: 24px;
+  --toss-radius-full: 9999px;
+  
+  /* Figma Radius (기존 유지) */
   --figma-radius-sm: 4px;
   --figma-radius-md: 6px;
   --figma-radius-lg: 8px;
@@ -79,7 +120,62 @@
   --figma-leading-loose: 2;
 }
 
-/* Figma 스타일 헬퍼 클래스 */
+/* 토스/Notion 스타일 헬퍼 클래스 */
+.toss-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.toss-card {
+  background: white;
+  border: 1px solid var(--notion-gray-200);
+  border-radius: var(--toss-radius-lg);
+  box-shadow: var(--notion-shadow-card);
+  transition: all 0.2s ease;
+  padding: 24px;
+}
+
+.toss-card:hover {
+  box-shadow: var(--notion-shadow-lg);
+  transform: translateY(-2px);
+}
+
+.notion-button {
+  background: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: var(--toss-radius-md);
+  padding: 12px 20px;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.notion-button:hover {
+  background: var(--primary-blue-hover);
+  transform: translateY(-1px);
+}
+
+.notion-input {
+  border: 1.5px solid var(--notion-gray-200);
+  border-radius: var(--toss-radius-md);
+  padding: 14px 16px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.notion-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px var(--primary-blue-light);
+}
+
+/* Figma 스타일 헬퍼 클래스 (기존 유지) */
 .figma-container {
   max-width: 1200px;
   margin: 0 auto;
